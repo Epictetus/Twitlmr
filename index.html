@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta http-equiv="Content-Type"
+            content="text/html; charset=UTF-8" />
+        <title>Twitlmr</title>
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="bootstrap/css/style.css" rel="stylesheet">
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+        <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+        <h1><a href="http://twitlmr.appspot.com/"><img src="bootstrap/img/TWLMR.png"　alt="Twitter List Members Ranking"></a></h1>
+        <p>Twitterの公開リストに登録されているアカウントのフォローワー数をランキングします。ユーザー名/リスト名の形で入力してください。</p>
+        <form method="post" action="/" class="form-horizontal">
+            <div class="control-group">
+            <label class="control-label" for="email">user/list</label>
+            <input type="text" name="username" value="lib110ka/lib-officail-jp"/>
+            <input type="submit" value="送信" class="btn btn-primary btn-mini"/>
+        </div>
+        </form>
+        <hr>
+        <p>{{username}}さんの{{listname}}のフォローワー数ランキングです。</p>
+        <table class="table-bordered table-hover">
+        <thead>
+        <tr>
+        <th>順位</th>
+        <th>アイコン</th>
+        <th>id</th>
+        <th>名前</th>
+        <th>フォローワー数</th>
+        <th>フォロー数</th>
+        <th>ツイート数</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in datas %}
+        <td>{{ forloop.counter }}</td>
+        <td><img src={{data.0}} width="45"></td>
+        <td><a href="https://twitter.com/{{data.1}}">{{data.1}}</></td>
+        <td>{{data.2}}</td>
+        <td class="num">{{data.3}}</td>
+        <td class="num">{{data.4}}</td>
+        <td class="num">{{data.5}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    </body>
+</html>
